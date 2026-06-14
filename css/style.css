@@ -637,3 +637,22 @@ html[data-theme="night"] .cloud { opacity: 0; }
   .footer__grid { grid-template-columns: 1fr; }
   .hero-car--right { display: none; }   /* mobil nur ein Auto */
 }
+
+/* Startbild (Hero) auf dem Handy aufgeraeumt: Text oben, Auto unten,
+   mehr Luft, weniger Wucht. Greift NUR <= 600px -> Desktop bleibt unveraendert. */
+@media (max-width: 600px) {
+  .hero { justify-content: flex-start; min-height: 82svh; }
+  .hero__inner { padding-top: 1.6rem; padding-bottom: 0; }
+  .hero__badge { font-size: 1rem; padding: .25rem .8rem; }
+  .hero h1 { font-size: clamp(2.5rem, 11vw, 3.4rem); margin: .5rem 0 .3rem; }
+  .hero__sub { font-size: 1rem; margin-bottom: 1.1rem; }
+  .hero__cta { flex-direction: column; align-items: stretch; gap: .55rem; }
+  .hero__cta .btn { width: 100%; justify-content: center; }
+
+  .cloud { display: none; }                                  /* ruhigerer Himmel */
+  .hero__celestial { width: 78px; height: 78px; top: 6%; right: 8%; }
+
+  /* nur ein Auto, mittig und ruhig im unteren Bereich (Position ueber
+     left/right/margin statt transform -> kollidiert nicht mit der Animation) */
+  .hero-car--left { width: 190px; left: 0; right: 0; margin-inline: auto; bottom: 5vh; }
+}
