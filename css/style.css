@@ -1,0 +1,639 @@
+/* =================================================================
+   Oldtimer-Radio.de  —  Stylesheet
+   Aufbau:
+   1. Schriften & Reset
+   2. Design-Tokens (Farben als CSS-Variablen)  -> Tag & Nacht
+   3. Grund-Layout & Typografie
+   4. Buttons & wiederkehrende Bausteine
+   5. Navigation (Navbar + mobiles Menue)
+   6. Theme-Schalter
+   7. Hero / Auto-Szene
+   8. Sektionen (Features, Produkte, Restauration, Ueber, Kontakt)
+   9. Shop & Warenkorb
+   10. Footer
+   11. Animationen & Scroll-Effekte
+   12. Responsive (mobile)
+   ================================================================= */
+
+/* ---------- 1. Schriften ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Pacifico&family=VT323&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- 2. Design-Tokens ---------- */
+/* :root = Standard (Tag-Modus). Alle Farben hier als Variablen.
+   Im Nacht-Modus (html[data-theme="night"]) ueberschreiben wir nur diese
+   Variablen — der Rest des CSS bleibt unveraendert. */
+:root {
+  /* Flaechen */
+  --bg:            #f6ecd9;   /* warmes Creme */
+  --bg-alt:        #efe1c6;   /* zweite Flaeche */
+  --surface:       #fffaf0;   /* Karten / Panels */
+  --surface-2:     #f3e6cd;
+
+  /* Schrift */
+  --text:          #2a2118;   /* dunkles Espresso-Braun */
+  --text-soft:     #6b5d49;   /* gedaempft */
+  --text-invert:   #fffaf0;
+
+  /* Akzente */
+  --accent:        #c0392b;   /* Vintage-Rot (Becker/Porsche) */
+  --accent-strong: #a32b1f;
+  --gold:          #d99a2b;   /* Senfgold / Messing */
+  --teal:          #2a6f6b;   /* Petrol */
+
+  /* Effekte */
+  --line:          #d9c39a;   /* Trennlinien / Rahmen */
+  --shadow:        rgba(60, 40, 15, .18);
+  --shadow-strong: rgba(60, 40, 15, .32);
+  --chrome-1:      #ffffff;
+  --chrome-2:      #cbb88f;
+  --glow:          transparent;   /* nachts: Neon-Glow, tags aus */
+
+  /* Himmel der Hero-Szene */
+  --sky-top:       #8ecae6;
+  --sky-bottom:    #ffe8b8;
+  --celestial:     #ffd34e;        /* Sonne */
+  --celestial-glow: #ffe9a8;
+  --road:          #4a4a52;
+  --road-line:     #f0d98a;
+
+  /* Maße */
+  --radius:        18px;
+  --radius-lg:     28px;
+  --maxw:          1180px;
+  --nav-h:         72px;
+  --ease:          cubic-bezier(.21, .68, .35, 1);
+}
+
+html[data-theme="night"] {
+  --bg:            #0c1322;
+  --bg-alt:        #0f1a2e;
+  --surface:       #15233d;
+  --surface-2:     #1b2c4a;
+
+  --text:          #ece7da;
+  --text-soft:     #9fb0c9;
+  --text-invert:   #0c1322;
+
+  --accent:        #ff4d6d;       /* Neon-Pink-Rot */
+  --accent-strong: #ff7a90;
+  --gold:          #ffc24b;       /* warmes Radio-Gluehen */
+  --teal:          #2ee6d6;       /* Neon-Cyan */
+
+  --line:          #2a3d5e;
+  --shadow:        rgba(0, 0, 0, .5);
+  --shadow-strong: rgba(0, 0, 0, .7);
+  --chrome-1:      #d7e2f5;
+  --chrome-2:      #4a5e82;
+  --glow:          0 0 22px;
+
+  --sky-top:       #060a16;
+  --sky-bottom:    #1a2547;
+  --celestial:     #f4f1e0;        /* Mond */
+  --celestial-glow: #aeb9d6;
+  --road:          #11151f;
+  --road-line:     #5b6a86;
+}
+
+/* ---------- 3. Grund-Layout & Typografie ---------- */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+  /* Sanfter Uebergang beim Theme-Wechsel */
+  transition: background .6s var(--ease), color .6s var(--ease);
+}
+
+/* feine Papier-Textur ueber dem Hintergrund (Retro-Anmutung) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .5;
+  background-image: radial-gradient(var(--line) .5px, transparent .5px);
+  background-size: 7px 7px;
+  mix-blend-mode: multiply;
+}
+html[data-theme="night"] body::before { mix-blend-mode: screen; opacity: .15; }
+
+h1, h2, h3, .display {
+  font-family: 'Bebas Neue', 'DM Sans', sans-serif;
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: .5px;
+}
+
+.script {
+  font-family: 'Pacifico', cursive;
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(1.1rem, 4vw, 2.5rem);
+  position: relative;
+  z-index: 1;
+}
+
+section { padding-block: clamp(3.5rem, 8vw, 6.5rem); position: relative; }
+
+.section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(2rem, 5vw, 3.5rem); }
+.section-head .eyebrow {
+  display: inline-block;
+  font-family: 'VT323', monospace;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: .35rem;
+}
+.section-head h2 { font-size: clamp(2.6rem, 7vw, 4.6rem); color: var(--text); }
+.section-head p { color: var(--text-soft); margin-top: .8rem; font-size: 1.08rem; }
+
+a { color: var(--accent); text-decoration: none; }
+
+/* ---------- 4. Buttons ---------- */
+.btn {
+  --b: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  padding: .7rem 1.7rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--b);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 0 0 var(--accent-strong), 0 10px 20px -6px var(--shadow-strong);
+  transition: transform .12s var(--ease), box-shadow .12s var(--ease), filter .2s;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.05); box-shadow: 0 8px 0 0 var(--accent-strong), 0 16px 26px -8px var(--shadow-strong); }
+.btn:active { transform: translateY(4px); box-shadow: 0 2px 0 0 var(--accent-strong), 0 6px 12px -6px var(--shadow-strong); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--line);
+  box-shadow: none;
+}
+.btn--ghost:hover { border-color: var(--accent); color: var(--accent); box-shadow: none; }
+
+.btn--gold { --b: var(--gold); --accent-strong: #b07d18; color: #2a2118; }
+
+/* ---------- 5. Navigation ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(12px) saturate(1.4);
+  border-bottom: 1px solid var(--line);
+  transition: background .6s var(--ease), border-color .6s var(--ease);
+}
+.nav .container { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+.brand { display: flex; align-items: center; gap: .65rem; }
+.brand__mark {
+  width: 42px; height: 42px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--chrome-1), var(--chrome-2));
+  box-shadow: inset 0 2px 3px rgba(255,255,255,.7), inset 0 -3px 4px rgba(0,0,0,.25), 0 3px 8px var(--shadow);
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+.brand__name { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; line-height: 1; letter-spacing: .5px; color: var(--text); }
+.brand__name small { display: block; font-family: 'DM Sans'; font-size: .58rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-soft); }
+
+.nav__links { display: flex; align-items: center; gap: .35rem; list-style: none; }
+.nav__links a {
+  display: block;
+  padding: .5rem .85rem;
+  border-radius: 999px;
+  color: var(--text);
+  font-weight: 500;
+  font-size: .96rem;
+  transition: background .2s, color .2s;
+}
+.nav__links a:hover, .nav__links a.is-active { background: var(--surface-2); color: var(--accent); }
+
+.nav__right { display: flex; align-items: center; gap: .7rem; }
+
+/* Warenkorb-Knopf in der Navbar */
+.cart-btn {
+  position: relative;
+  width: 44px; height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1.15rem;
+  display: grid; place-items: center;
+  transition: background .2s, transform .12s;
+}
+.cart-btn:hover { background: var(--surface-2); transform: translateY(-2px); }
+.cart-btn__count {
+  position: absolute; top: -6px; right: -6px;
+  min-width: 20px; height: 20px; padding: 0 5px;
+  border-radius: 999px;
+  background: var(--accent); color: #fff;
+  font-size: .72rem; font-weight: 700;
+  display: grid; place-items: center;
+  transform: scale(0);
+  transition: transform .25s var(--ease);
+}
+.cart-btn__count.is-visible { transform: scale(1); }
+
+/* Hamburger */
+.nav__toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); cursor: pointer; }
+.nav__toggle span, .nav__toggle span::before, .nav__toggle span::after {
+  content: ""; display: block; width: 20px; height: 2px; background: var(--text); margin: 0 auto; position: relative; transition: .25s var(--ease);
+}
+.nav__toggle span::before { position: absolute; top: -6px; }
+.nav__toggle span::after { position: absolute; top: 6px; }
+.nav.is-open .nav__toggle span { background: transparent; }
+.nav.is-open .nav__toggle span::before { top: 0; transform: rotate(45deg); }
+.nav.is-open .nav__toggle span::after { top: 0; transform: rotate(-45deg); }
+
+/* ---------- 6. Theme-Schalter ---------- */
+.theme-toggle {
+  position: relative;
+  width: 64px; height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: linear-gradient(90deg, #8ecae6, #ffe8b8);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background .6s var(--ease);
+}
+html[data-theme="night"] .theme-toggle { background: linear-gradient(90deg, #0b1733, #28365e); }
+.theme-toggle__knob {
+  position: absolute; top: 3px; left: 3px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--celestial);
+  box-shadow: 0 0 10px var(--celestial-glow), 0 2px 4px rgba(0,0,0,.3);
+  display: grid; place-items: center;
+  font-size: .9rem;
+  transition: transform .45s var(--ease), background .45s;
+}
+html[data-theme="night"] .theme-toggle__knob { transform: translateX(30px); }
+
+/* ---------- 7. Hero / Auto-Szene ---------- */
+.hero {
+  position: relative;
+  min-height: calc(100svh - var(--nav-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 0;
+  isolation: isolate;
+}
+.hero__sky {
+  position: absolute; inset: 0; z-index: -3;
+  background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+  transition: background .8s var(--ease);
+}
+/* Sonne / Mond */
+.hero__celestial {
+  position: absolute; top: 12%; right: 14%; z-index: -2;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff, var(--celestial));
+  box-shadow: 0 0 60px 14px var(--celestial-glow), 0 0 140px 30px var(--celestial-glow);
+  transition: background .8s, box-shadow .8s, transform 1.2s var(--ease);
+}
+html[data-theme="night"] .hero__celestial { background: radial-gradient(circle at 38% 32%, #fff, var(--celestial) 60%, #c9cfe0); box-shadow: 0 0 30px 6px rgba(220,225,240,.55); }
+/* Mondkrater (nur nachts sichtbar) */
+.hero__celestial::before, .hero__celestial::after {
+  content: ""; position: absolute; border-radius: 50%;
+  background: rgba(120,130,160,.25); opacity: 0; transition: opacity .8s;
+}
+.hero__celestial::before { width: 26px; height: 26px; top: 22px; left: 28px; }
+.hero__celestial::after  { width: 16px; height: 16px; bottom: 26px; right: 30px; }
+html[data-theme="night"] .hero__celestial::before, html[data-theme="night"] .hero__celestial::after { opacity: 1; }
+
+/* Sterne (nur nachts) */
+.hero__stars { position: absolute; inset: 0 0 30% 0; z-index: -2; opacity: 0; transition: opacity 1s; pointer-events: none; }
+html[data-theme="night"] .hero__stars { opacity: 1; }
+
+/* Wolken (nur tags) */
+.cloud { position: absolute; z-index: -2; opacity: .9; transition: opacity .8s; }
+html[data-theme="night"] .cloud { opacity: 0; }
+.cloud span { display:block; background: #fff; border-radius: 100px; filter: blur(.3px); box-shadow: 0 8px 18px rgba(0,0,0,.06); }
+
+/* Straße */
+.hero__road {
+  position: relative; z-index: -1;
+  height: 26vh; min-height: 150px;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--road) 80%, transparent), var(--road));
+  border-top: 3px solid color-mix(in srgb, var(--road) 60%, #000);
+  transition: background .8s;
+}
+.hero__road::before { /* Mittelstreifen */
+  content: ""; position: absolute; top: 52%; left: 0; right: 0; height: 6px;
+  background: repeating-linear-gradient(90deg, var(--road-line) 0 46px, transparent 46px 92px);
+  opacity: .9;
+}
+
+/* Auto-Buehne (Eltern-Container -> bekommt den Scroll-Parallax, damit
+   er nicht mit der Einfahr-/Schwebe-Animation der Autos kollidiert) */
+.hero__stage { position: absolute; inset: 0; z-index: 2; pointer-events: none; will-change: transform; }
+.hero-car { position: absolute; bottom: 11vh; width: clamp(230px, 34vw, 460px); filter: drop-shadow(0 18px 18px rgba(0,0,0,.32)); will-change: transform; }
+.hero-car--left  { left: 6%; }                                   /* faehrt von links herein, parkt links */
+.hero-car--right { right: 6%; bottom: 9vh; width: clamp(180px, 26vw, 360px); opacity: .92; }  /* gespiegelt, parkt rechts */
+
+/* Hero-Text */
+.hero__inner { position: relative; z-index: 5; padding-bottom: clamp(3rem, 9vh, 6rem); }
+.hero__badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: 'VT323', monospace; font-size: 1.15rem; letter-spacing: 1px;
+  background: var(--surface); color: var(--accent);
+  padding: .3rem .9rem; border-radius: 999px; border: 1px solid var(--line);
+  box-shadow: 0 4px 14px var(--shadow);
+}
+.hero__badge .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: var(--glow) var(--accent); animation: pulse 1.6s infinite; }
+.hero h1 { font-size: clamp(3.4rem, 12vw, 8.5rem); color: var(--text); margin: .6rem 0 .2rem; text-shadow: 0 3px 0 var(--surface); }
+.hero h1 .hl { color: var(--accent); display: inline-block; }
+.hero__sub { max-width: 540px; font-size: 1.15rem; color: var(--text-soft); margin-bottom: 1.6rem; }
+.hero__cta { display: flex; gap: .8rem; flex-wrap: wrap; }
+
+/* Lauftext-Band unter dem Hero */
+.marquee {
+  background: var(--accent); color: #fff;
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px;
+  padding: .55rem 0; overflow: hidden; white-space: nowrap; border-block: 3px solid var(--accent-strong);
+}
+.marquee__track { display: inline-block; animation: marquee 26s linear infinite; }
+.marquee__track span { padding: 0 1.5rem; }
+.marquee__track .star { color: var(--gold); }
+
+/* ---------- 8. Sektionen ---------- */
+/* Vertrauens-Logos / Marken */
+.brands { background: var(--bg-alt); transition: background .6s; }
+.brands__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(1.5rem, 6vw, 4rem); }
+.brands__row span { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.4rem, 3vw, 2.1rem); color: var(--text-soft); letter-spacing: 1px; opacity: .8; transition: color .2s, opacity .2s, transform .2s; }
+.brands__row span:hover { color: var(--accent); opacity: 1; transform: translateY(-3px); }
+
+/* Feature-Karten */
+.features__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.4rem; }
+.feature {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.8rem 1.5rem; box-shadow: 0 10px 26px -16px var(--shadow-strong);
+  transition: transform .25s var(--ease), box-shadow .25s, border-color .25s;
+}
+.feature:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -22px var(--shadow-strong); border-color: var(--accent); }
+.feature__icon { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; font-size: 1.6rem; background: var(--surface-2); margin-bottom: 1rem; box-shadow: var(--glow) color-mix(in srgb, var(--gold) 50%, transparent); }
+.feature h3 { font-size: 1.7rem; color: var(--text); margin-bottom: .35rem; }
+.feature p { color: var(--text-soft); font-size: .98rem; }
+
+/* Produkt-Karten (auch im Shop genutzt) */
+.products__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.6rem; }
+.product {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; display: flex; flex-direction: column;
+  box-shadow: 0 12px 30px -20px var(--shadow-strong);
+  transition: transform .25s var(--ease), box-shadow .25s, border-color .25s;
+}
+.product:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 26px 46px -24px var(--shadow-strong); }
+.product__media {
+  position: relative; aspect-ratio: 4 / 3;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 35%, var(--surface-2), var(--surface));
+  overflow: hidden;
+}
+.product__radio { width: 78%; }     /* CSS-Radio statt Foto */
+.product__tag {
+  position: absolute; top: .8rem; left: .8rem;
+  font-family: 'VT323', monospace; font-size: .95rem; letter-spacing: 1px;
+  background: var(--accent); color: #fff; padding: .12rem .6rem; border-radius: 999px;
+}
+.product__tag--gold { background: var(--gold); color: #2a2118; }
+.product__body { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+.product__brand { font-family: 'VT323', monospace; color: var(--text-soft); letter-spacing: 1px; font-size: .95rem; }
+.product__name { font-family: 'Bebas Neue', sans-serif; font-size: 1.55rem; line-height: 1; color: var(--text); }
+.product__desc { font-size: .9rem; color: var(--text-soft); flex: 1; }
+.product__foot { display: flex; align-items: center; justify-content: space-between; margin-top: .4rem; }
+.product__price { font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem; color: var(--accent); }
+.product__price small { font-family: 'DM Sans'; font-size: .7rem; color: var(--text-soft); display: block; line-height: 1; }
+
+/* Mini-Autoradio aus CSS (Deko in Produktkarten) */
+.radio-face {
+  width: 210px; max-width: 80%; aspect-ratio: 21 / 9;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #2c2c30, #161618);
+  border: 3px solid var(--chrome-2);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.15), 0 8px 18px rgba(0,0,0,.4);
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; padding: 0 10px;
+}
+.radio-face .knob { width: 26px; height: 26px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #aaa, #333); box-shadow: inset 0 -2px 3px rgba(0,0,0,.6), 0 1px 2px rgba(0,0,0,.4); }
+.radio-face .screen {
+  height: 60%; border-radius: 4px; background: #1c2a14;
+  display: grid; place-items: center;
+  font-family: 'VT323', monospace; color: #9fe870; font-size: 1.1rem; letter-spacing: 1px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,.8); text-shadow: 0 0 6px #9fe870;
+}
+
+/* Split-Sektion (Restauration / Ueber) */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 4.5rem); align-items: center; }
+.split--rev .split__media { order: 2; }
+.split__media { position: relative; }
+.split__copy h2 { font-size: clamp(2.4rem, 6vw, 4rem); color: var(--text); margin-bottom: .4rem; }
+.split__copy p { color: var(--text-soft); margin-bottom: 1rem; }
+.checklist { list-style: none; display: grid; gap: .7rem; margin: 1.2rem 0 1.6rem; }
+.checklist li { display: flex; gap: .7rem; align-items: flex-start; }
+.checklist li::before { content: "✓"; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--teal); color: #fff; display: grid; place-items: center; font-size: .9rem; box-shadow: var(--glow) var(--teal); }
+
+/* Foto-Rahmen mit Polaroid-Anmutung */
+.polaroid {
+  background: var(--surface); padding: 14px 14px 50px; border-radius: 6px;
+  box-shadow: 0 20px 44px -20px var(--shadow-strong); transform: rotate(-2.5deg);
+  border: 1px solid var(--line); position: relative;
+}
+.polaroid img { width: 100%; display: block; border-radius: 3px; }
+.polaroid figcaption { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-family: 'Pacifico', cursive; color: var(--text-soft); font-size: 1.05rem; }
+.polaroid--scene { background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom)); }
+
+/* Stat-Zahlen */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; }
+.stat__num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 5rem); color: var(--accent); line-height: 1; }
+.stat__label { color: var(--text-soft); font-size: .95rem; letter-spacing: .5px; }
+
+/* Timeline (Ueber-Seite) */
+.timeline { max-width: 760px; margin-inline: auto; position: relative; padding-left: 30px; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 3px; background: var(--line); }
+.timeline__item { position: relative; padding: 0 0 2rem .4rem; }
+.timeline__item::before { content: ""; position: absolute; left: -30px; top: 4px; width: 17px; height: 17px; border-radius: 50%; background: var(--accent); border: 3px solid var(--surface); box-shadow: var(--glow) var(--accent); }
+.timeline__year { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--accent); }
+
+/* CTA-Band */
+.cta-band { background: var(--accent); color: #fff; text-align: center; border-radius: var(--radius-lg); padding: clamp(2.5rem, 7vw, 4rem); box-shadow: 0 24px 50px -24px var(--shadow-strong); }
+.cta-band h2 { font-size: clamp(2.4rem, 7vw, 4.5rem); }
+.cta-band p { opacity: .9; max-width: 520px; margin: .6rem auto 1.6rem; }
+.cta-band .btn { background: #fff; color: var(--accent); box-shadow: 0 6px 0 0 rgba(0,0,0,.25); }
+
+/* ---------- 9. Shop & Warenkorb ---------- */
+.shop-head { padding-top: clamp(2.5rem, 6vw, 4rem); padding-bottom: 1rem; }
+.shop-toolbar { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 2rem; }
+.chip {
+  font-family: 'DM Sans'; font-weight: 500; font-size: .92rem;
+  padding: .45rem 1.1rem; border-radius: 999px; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); color: var(--text);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.chip:hover { border-color: var(--accent); }
+.chip.is-active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.product .add { width: 100%; justify-content: center; margin-top: .6rem; }
+.product .add.added { background: var(--teal); --accent-strong: #1f5450; }
+
+/* Warenkorb-Schublade */
+.drawer-backdrop {
+  position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.45);
+  opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; backdrop-filter: blur(2px);
+}
+.drawer-backdrop.is-open { opacity: 1; visibility: visible; }
+.drawer {
+  position: fixed; top: 0; right: 0; z-index: 201;
+  width: min(420px, 92vw); height: 100%;
+  background: var(--surface); border-left: 1px solid var(--line);
+  box-shadow: -20px 0 50px -20px rgba(0,0,0,.5);
+  display: flex; flex-direction: column;
+  transform: translateX(100%); transition: transform .35s var(--ease);
+}
+.drawer.is-open { transform: translateX(0); }
+.drawer__head { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 1.3rem; border-bottom: 1px solid var(--line); }
+.drawer__head h3 { font-size: 1.8rem; color: var(--text); }
+.drawer__close { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface-2); color: var(--text); cursor: pointer; font-size: 1.1rem; }
+.drawer__items { flex: 1; overflow-y: auto; padding: 1rem 1.3rem; display: grid; gap: .9rem; align-content: start; }
+.drawer__empty { text-align: center; color: var(--text-soft); margin-top: 3rem; }
+.drawer__empty .big { font-size: 3rem; display: block; margin-bottom: .5rem; }
+
+.cart-item { display: grid; grid-template-columns: 56px 1fr auto; gap: .8rem; align-items: center; padding-bottom: .9rem; border-bottom: 1px dashed var(--line); }
+.cart-item__thumb { width: 56px; height: 56px; border-radius: 10px; background: linear-gradient(160deg, #2c2c30, #161618); display: grid; place-items: center; color: #9fe870; font-family: 'VT323'; font-size: .8rem; }
+.cart-item__name { font-weight: 700; font-size: .95rem; line-height: 1.2; }
+.cart-item__price { color: var(--text-soft); font-size: .85rem; }
+.qty { display: inline-flex; align-items: center; gap: .3rem; margin-top: .25rem; }
+.qty button { width: 24px; height: 24px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface-2); cursor: pointer; color: var(--text); font-size: .9rem; }
+.qty span { min-width: 22px; text-align: center; font-weight: 700; font-size: .9rem; }
+.cart-item__remove { background: none; border: none; color: var(--text-soft); cursor: pointer; font-size: 1.1rem; align-self: start; }
+.cart-item__remove:hover { color: var(--accent); }
+
+.drawer__foot { padding: 1.2rem 1.3rem; border-top: 1px solid var(--line); display: grid; gap: .8rem; }
+.drawer__total { display: flex; justify-content: space-between; align-items: baseline; }
+.drawer__total .label { color: var(--text-soft); }
+.drawer__total .sum { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--accent); }
+.drawer__note { font-size: .78rem; color: var(--text-soft); text-align: center; }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; z-index: 300;
+  transform: translate(-50%, 140%);
+  background: var(--text); color: var(--bg);
+  padding: .8rem 1.3rem; border-radius: 999px;
+  font-weight: 600; box-shadow: 0 12px 30px rgba(0,0,0,.3);
+  transition: transform .4s var(--ease);
+}
+.toast.is-visible { transform: translate(-50%, 0); }
+
+/* ---------- 10. Footer ---------- */
+.footer { background: var(--bg-alt); border-top: 1px solid var(--line); padding-block: clamp(2.5rem, 6vw, 4rem) 1.5rem; transition: background .6s; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 2rem; }
+.footer h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--text); margin-bottom: .8rem; letter-spacing: 1px; }
+.footer ul { list-style: none; display: grid; gap: .45rem; }
+.footer a { color: var(--text-soft); transition: color .2s; }
+.footer a:hover { color: var(--accent); }
+.footer__brand p { color: var(--text-soft); font-size: .92rem; margin-top: .6rem; max-width: 30ch; }
+.footer__bottom { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: .6rem; justify-content: space-between; color: var(--text-soft); font-size: .85rem; }
+.footer__counter { font-family: 'VT323', monospace; font-size: 1rem; letter-spacing: 1px; }
+
+/* ---------- Formular ---------- */
+.form { display: grid; gap: 1rem; max-width: 620px; }
+.form__row { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+.field { display: grid; gap: .35rem; }
+.field label { font-weight: 500; font-size: .92rem; }
+.field input, .field textarea, .field select {
+  font-family: inherit; font-size: 1rem; padding: .75rem .9rem;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--text);
+  transition: border-color .2s, box-shadow .2s;
+}
+.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent); }
+.form__ok { background: var(--teal); color: #fff; padding: .9rem 1.1rem; border-radius: 12px; display: none; }
+.form__ok.is-visible { display: block; }
+
+.info-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; display: grid; gap: 1rem; box-shadow: 0 12px 30px -20px var(--shadow-strong); }
+.info-card .row { display: flex; gap: .8rem; align-items: flex-start; }
+.info-card .row .ic { font-size: 1.3rem; }
+
+/* ---------- 11. Animationen ---------- */
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .4; transform: scale(.7); } }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-.5deg); } 50% { transform: translateY(-10px) rotate(.5deg); } }
+@keyframes twinkle { 0%,100% { opacity: .2; } 50% { opacity: 1; } }
+/* Einfahrt endet exakt bei translateX(0) = Ruheposition (kein fill noetig,
+   daher kein Sprung). Danach uebernimmt 'float' mit Verzoegerung -> beide
+   Animationen ueberschneiden sich zeitlich nie und kaempfen nicht um transform. */
+@keyframes drive-in-left  { from { transform: translateX(-135%); } to { transform: translateX(0); } }
+@keyframes drive-in-right { from { transform: translateX(135%);  } to { transform: translateX(0); } }
+
+.hero-car--left  { animation: drive-in-left 1.5s var(--ease) .2s, float 6s ease-in-out 2s infinite; }
+.hero-car--right { animation: drive-in-right 1.8s var(--ease) .35s, float 7s ease-in-out 2.4s infinite; }
+
+/* Scroll-Reveal: Elemente starten unsichtbar, .reveal-in macht sie sichtbar */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.reveal-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .hero-car--left  { left: 6%; transform: none; }
+  .hero-car--right { right: 6%; }
+}
+
+/* ---------- 12. Responsive ---------- */
+@media (max-width: 900px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .split { grid-template-columns: 1fr; }
+  .split--rev .split__media { order: 0; }
+}
+
+@media (max-width: 760px) {
+  .nav__toggle { display: block; }
+  .nav__links {
+    position: fixed; inset: var(--nav-h) 0 auto 0;
+    flex-direction: column; align-items: stretch; gap: .2rem;
+    background: var(--surface); border-bottom: 1px solid var(--line);
+    padding: 1rem clamp(1.1rem, 4vw, 2.5rem) 1.4rem;
+    box-shadow: 0 20px 40px -20px var(--shadow-strong);
+    transform: translateY(-130%); transition: transform .35s var(--ease);
+  }
+  .nav.is-open .nav__links { transform: translateY(0); }
+  .nav__links a { padding: .8rem 1rem; }
+  .form__row { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .hero-car--right { display: none; }   /* mobil nur ein Auto */
+}
