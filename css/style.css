@@ -307,11 +307,9 @@ html[data-theme="night"] .theme-toggle__knob { transform: translateX(30px); }
 /* ---------- 7. Hero / Auto-Szene ---------- */
 .hero {
   position: relative;
-  min-height: calc(100svh - var(--nav-h));
   display: flex;
-  flex-direction: column;       /* Text oben (flex:1), Auto-Szene unten */
+  flex-direction: column;       /* Text oben, Auto-Szene direkt darunter */
   overflow: hidden;
-  padding: 0;
   isolation: isolate;
 }
 .hero__sky {
@@ -346,40 +344,39 @@ html[data-theme="night"] .hero__stars { opacity: 1; }
 html[data-theme="night"] .cloud { opacity: 0; }
 .cloud span { display:block; background: #fff; border-radius: 100px; filter: blur(.3px); box-shadow: 0 8px 18px rgba(0,0,0,.06); }
 
-/* Auto-Szene: eigener Bereich unten im Hero. Enthaelt Strasse + Autos,
-   liegt IMMER unter dem Text -> keine Ueberlappung mit Buttons. */
+/* Auto-Szene: eigener Bereich direkt unter dem Text. Feste Hoehe ->
+   vorhersehbar; Autos stehen sauber auf der Strasse, ueberlappen nie den Text. */
 .hero__scene {
   position: relative; z-index: 2;
   flex: none;
-  height: clamp(200px, 30vh, 330px);
+  height: 230px;
   pointer-events: none;
 }
 
 /* Straße als Boden am unteren Rand der Szene */
 .hero__road {
   position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
-  height: 46%;
+  height: 76px;
   background: linear-gradient(to bottom, color-mix(in srgb, var(--road) 80%, transparent), var(--road));
   border-top: 3px solid color-mix(in srgb, var(--road) 60%, #000);
   transition: background .8s;
 }
 .hero__road::before { /* Mittelstreifen */
-  content: ""; position: absolute; top: 48%; left: 0; right: 0; height: 6px;
+  content: ""; position: absolute; top: 38px; left: 0; right: 0; height: 6px;
   background: repeating-linear-gradient(90deg, var(--road-line) 0 46px, transparent 46px 92px);
   opacity: .9;
 }
 
-/* Autos stehen auf der Strasse */
-.hero-car { position: absolute; z-index: 2; width: clamp(210px, 30vw, 400px); filter: drop-shadow(0 16px 14px rgba(0,0,0,.32)); will-change: transform; }
-.hero-car--left  { left: 3%;  bottom: 16%; }                                    /* faehrt von links herein */
-.hero-car--right { right: 3%; bottom: 11%; width: clamp(170px, 24vw, 320px); opacity: .9; }  /* gespiegelt, rechts */
+/* Autos stehen mit den Raedern auf der Strassenkante (Bild 490x348, Verh. ~1.41).
+   bottom so gewaehlt, dass die Raeder knapp im Asphalt stehen -> geerdet. */
+.hero-car { position: absolute; z-index: 2; bottom: 46px; width: clamp(175px, 20vw, 250px); filter: drop-shadow(0 14px 12px rgba(0,0,0,.32)); will-change: transform; }
+.hero-car--left  { left: 6%; }                                                  /* faehrt von links herein */
+.hero-car--right { right: 6%; width: clamp(150px, 16vw, 210px); opacity: .9; }  /* gespiegelt, rechts, etwas kleiner */
 
-/* Hero-Text — nimmt den oberen Bereich und zentriert seinen Inhalt vertikal */
+/* Hero-Text — sitzt oben, kompaktes Padding (kein riesiger Leerraum mehr) */
 .hero__inner {
   position: relative; z-index: 5;
-  flex: 1 1 auto;
-  display: flex; flex-direction: column; justify-content: center;
-  padding-block: clamp(1.5rem, 4vh, 3rem);
+  padding-block: clamp(2rem, 6vh, 3.5rem) clamp(.8rem, 2vh, 1.4rem);
 }
 .hero__badge {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -679,6 +676,6 @@ html[data-theme="night"] .cloud { opacity: 0; }
   .hero__celestial { width: 78px; height: 78px; top: 6%; right: 8%; }
 
   /* eigener, kompakter Szenen-Bereich; nur ein Auto, mittig auf der Strasse */
-  .hero__scene { height: clamp(150px, 24vh, 220px); }
-  .hero-car--left { width: 180px; left: 0; right: 0; margin-inline: auto; bottom: 14%; }
+  .hero__scene { height: 210px; }
+  .hero-car--left { width: 168px; left: 0; right: 0; margin-inline: auto; bottom: 52px; }
 }
