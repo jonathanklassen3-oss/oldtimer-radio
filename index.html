@@ -56,12 +56,6 @@
       <span style="width:90px;height:26px;"></span>
     </div>
 
-    <!-- bewegliche Autos -->
-    <div class="hero__stage">
-      <img class="hero-car hero-car--left"  id="carLeft"  src="images/porsche.png"         alt="Porsche 356 Oldtimer" />
-      <img class="hero-car hero-car--right" id="carRight" src="images/porsche-spiegel.png" alt="Porsche 356 Oldtimer, gespiegelt" />
-    </div>
-
     <div class="hero__inner">
       <div class="container">
         <span class="hero__badge"><span class="dot"></span> ON AIR · Klang aus einer anderen Zeit</span>
@@ -72,6 +66,13 @@
           <a class="btn btn--ghost" href="restauration.html">Restauration entdecken</a>
         </div>
       </div>
+    </div>
+
+    <!-- Auto-Szene: eigener Bereich UNTER dem Text, das Auto steht auf der Strasse -->
+    <div class="hero__scene">
+      <div class="hero__road"></div>
+      <img class="hero-car hero-car--left"  id="carLeft"  src="images/porsche.png"         alt="Porsche 356 Oldtimer" />
+      <img class="hero-car hero-car--right" id="carRight" src="images/porsche-spiegel.png" alt="Porsche 356 Oldtimer, gespiegelt" />
     </div>
   </section>
 
@@ -156,8 +157,8 @@
     <div class="container">
       <div class="split">
         <div class="split__media reveal">
-          <figure class="polaroid polaroid--scene">
-            <img src="images/porsche.png" alt="Porsche 356 Oldtimer" />
+          <figure class="polaroid">
+            <div class="polaroid__stage"><img src="images/porsche.png" alt="Porsche 356 Oldtimer" /></div>
             <figcaption>Bereit für die nächste Ausfahrt</figcaption>
           </figure>
         </div>

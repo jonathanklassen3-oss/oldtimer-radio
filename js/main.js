@@ -269,21 +269,17 @@ function initStars() {
 }
 
 /* ===================== PARALLAX im Hero =====================
-   Bewegt Auto-Bühne und Himmelskörper beim Scrollen unterschiedlich
-   schnell -> Tiefenwirkung. Läuft auf der Bühne, nicht auf den Autos,
-   damit es nicht mit deren Animation kollidiert. */
+   Bewegt nur Sonne/Mond beim Scrollen leicht mit -> dezente Tiefe.
+   Die Auto-Szene bleibt ruhig, damit die Strasse nicht verrutscht. */
 function initParallax() {
-  const stage = document.querySelector('.hero__stage');
-  const sky   = document.getElementById('celestial');
-  if (!stage && !sky) return;
+  const sky = document.getElementById('celestial');
+  if (!sky) return;
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      const y = window.scrollY;
-      if (stage) stage.style.transform = `translateY(${y * 0.18}px)`;
-      if (sky)   sky.style.transform   = `translateY(${y * 0.32}px)`;
+      sky.style.transform = `translateY(${window.scrollY * 0.3}px)`;
       ticking = false;
     });
   }, { passive: true });

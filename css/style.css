@@ -309,8 +309,7 @@ html[data-theme="night"] .theme-toggle__knob { transform: translateX(30px); }
   position: relative;
   min-height: calc(100svh - var(--nav-h));
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: column;       /* Text oben (flex:1), Auto-Szene unten */
   overflow: hidden;
   padding: 0;
   isolation: isolate;
@@ -347,29 +346,41 @@ html[data-theme="night"] .hero__stars { opacity: 1; }
 html[data-theme="night"] .cloud { opacity: 0; }
 .cloud span { display:block; background: #fff; border-radius: 100px; filter: blur(.3px); box-shadow: 0 8px 18px rgba(0,0,0,.06); }
 
-/* Straße */
+/* Auto-Szene: eigener Bereich unten im Hero. Enthaelt Strasse + Autos,
+   liegt IMMER unter dem Text -> keine Ueberlappung mit Buttons. */
+.hero__scene {
+  position: relative; z-index: 2;
+  flex: none;
+  height: clamp(200px, 30vh, 330px);
+  pointer-events: none;
+}
+
+/* Straße als Boden am unteren Rand der Szene */
 .hero__road {
-  position: relative; z-index: -1;
-  height: 26vh; min-height: 150px;
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+  height: 46%;
   background: linear-gradient(to bottom, color-mix(in srgb, var(--road) 80%, transparent), var(--road));
   border-top: 3px solid color-mix(in srgb, var(--road) 60%, #000);
   transition: background .8s;
 }
 .hero__road::before { /* Mittelstreifen */
-  content: ""; position: absolute; top: 52%; left: 0; right: 0; height: 6px;
+  content: ""; position: absolute; top: 48%; left: 0; right: 0; height: 6px;
   background: repeating-linear-gradient(90deg, var(--road-line) 0 46px, transparent 46px 92px);
   opacity: .9;
 }
 
-/* Auto-Buehne (Eltern-Container -> bekommt den Scroll-Parallax, damit
-   er nicht mit der Einfahr-/Schwebe-Animation der Autos kollidiert) */
-.hero__stage { position: absolute; inset: 0; z-index: 2; pointer-events: none; will-change: transform; }
-.hero-car { position: absolute; bottom: 11vh; width: clamp(230px, 34vw, 460px); filter: drop-shadow(0 18px 18px rgba(0,0,0,.32)); will-change: transform; }
-.hero-car--left  { left: 6%; }                                   /* faehrt von links herein, parkt links */
-.hero-car--right { right: 6%; bottom: 9vh; width: clamp(180px, 26vw, 360px); opacity: .92; }  /* gespiegelt, parkt rechts */
+/* Autos stehen auf der Strasse */
+.hero-car { position: absolute; z-index: 2; width: clamp(210px, 30vw, 400px); filter: drop-shadow(0 16px 14px rgba(0,0,0,.32)); will-change: transform; }
+.hero-car--left  { left: 3%;  bottom: 16%; }                                    /* faehrt von links herein */
+.hero-car--right { right: 3%; bottom: 11%; width: clamp(170px, 24vw, 320px); opacity: .9; }  /* gespiegelt, rechts */
 
-/* Hero-Text */
-.hero__inner { position: relative; z-index: 5; padding-bottom: clamp(3rem, 9vh, 6rem); }
+/* Hero-Text — nimmt den oberen Bereich und zentriert seinen Inhalt vertikal */
+.hero__inner {
+  position: relative; z-index: 5;
+  flex: 1 1 auto;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-block: clamp(1.5rem, 4vh, 3rem);
+}
 .hero__badge {
   display: inline-flex; align-items: center; gap: .5rem;
   font-family: 'VT323', monospace; font-size: 1.15rem; letter-spacing: 1px;
@@ -475,9 +486,25 @@ html[data-theme="night"] .cloud { opacity: 0; }
   box-shadow: 0 20px 44px -20px var(--shadow-strong); transform: rotate(-2.5deg);
   border: 1px solid var(--line); position: relative;
 }
-.polaroid img { width: 100%; display: block; border-radius: 3px; }
 .polaroid figcaption { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-family: 'Pacifico', cursive; color: var(--text-soft); font-size: 1.05rem; }
-.polaroid--scene { background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom)); }
+
+/* Mini-Szene im Polaroid: Himmel + Strasse + Auto darauf — gleiche Bildsprache
+   wie im Hero und passt sich an Tag/Nacht an -> homogen auf allen Seiten */
+.polaroid__stage {
+  position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 3px;
+  background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+  transition: background .8s var(--ease);
+}
+.polaroid__stage::after { /* Strasse */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 26%;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--road) 80%, transparent), var(--road));
+  border-top: 2px solid color-mix(in srgb, var(--road) 60%, #000);
+  transition: background .8s;
+}
+.polaroid__stage img {
+  position: absolute; left: 50%; bottom: 15%; transform: translateX(-50%);
+  width: 80%; display: block; filter: drop-shadow(0 12px 10px rgba(0,0,0,.3)); z-index: 1;
+}
 
 /* Stat-Zahlen */
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; }
@@ -610,8 +637,8 @@ html[data-theme="night"] .cloud { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
-  .hero-car--left  { left: 6%; transform: none; }
-  .hero-car--right { right: 6%; }
+  .hero-car--left  { left: 3%; transform: none; }
+  .hero-car--right { right: 3%; }
 }
 
 /* ---------- 12. Responsive ---------- */
@@ -641,8 +668,7 @@ html[data-theme="night"] .cloud { opacity: 0; }
 /* Startbild (Hero) auf dem Handy aufgeraeumt: Text oben, Auto unten,
    mehr Luft, weniger Wucht. Greift NUR <= 600px -> Desktop bleibt unveraendert. */
 @media (max-width: 600px) {
-  .hero { justify-content: flex-start; min-height: 82svh; }
-  .hero__inner { padding-top: 1.6rem; padding-bottom: 0; }
+  .hero__inner { padding-block: 1.4rem; }
   .hero__badge { font-size: 1rem; padding: .25rem .8rem; }
   .hero h1 { font-size: clamp(2.5rem, 11vw, 3.4rem); margin: .5rem 0 .3rem; }
   .hero__sub { font-size: 1rem; margin-bottom: 1.1rem; }
@@ -652,7 +678,7 @@ html[data-theme="night"] .cloud { opacity: 0; }
   .cloud { display: none; }                                  /* ruhigerer Himmel */
   .hero__celestial { width: 78px; height: 78px; top: 6%; right: 8%; }
 
-  /* nur ein Auto, mittig und ruhig im unteren Bereich (Position ueber
-     left/right/margin statt transform -> kollidiert nicht mit der Animation) */
-  .hero-car--left { width: 190px; left: 0; right: 0; margin-inline: auto; bottom: 5vh; }
+  /* eigener, kompakter Szenen-Bereich; nur ein Auto, mittig auf der Strasse */
+  .hero__scene { height: clamp(150px, 24vh, 220px); }
+  .hero-car--left { width: 180px; left: 0; right: 0; margin-inline: auto; bottom: 14%; }
 }
