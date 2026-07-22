@@ -1,163 +1,124 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="day">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restauration — Oldtimer-Radio.de</title>
-  <meta name="description" content="Behutsame Restauration von Oldtimer-Autoradios: Revision, Klang wie ab Werk, originalgetreue Optik, optionaler UKW- oder Bluetooth-Umbau." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📻</text></svg>" />
+<meta charset="UTF-8">
+<title>Restauration — Oldtimer-Radio.de</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Restauration Ihres Oldtimer-Autoradios: zerlegt, geprüft, gereinigt und original wieder aufgebaut.">
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
-  <header class="nav" id="nav">
-    <div class="container">
-      <a class="brand" href="index.html" aria-label="Startseite">
-        <span class="brand__mark">📻</span>
-        <span class="brand__name">Oldtimer-Radio<small>seit 1989 · Senden-Bösensell</small></span>
-      </a>
-      <nav>
-        <ul class="nav__links" id="navLinks">
-          <li><a href="index.html">Start</a></li>
-          <li><a href="shop.html">Radio-Shop</a></li>
-          <li><a href="restauration.html">Restauration</a></li>
-          <li><a href="ueber.html">Über uns</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
-      <div class="nav__right">
-        <button class="theme-toggle" id="themeToggle" aria-label="Tag- und Nachtmodus umschalten" title="Tag / Nacht"><span class="theme-toggle__knob" id="themeKnob">☀️</span></button>
-        <button class="cart-btn" id="cartBtn" aria-label="Warenkorb öffnen">🛒<span class="cart-btn__count" id="cartCount">0</span></button>
-        <button class="nav__toggle" id="navToggle" aria-label="Menü"><span></span></button>
-      </div>
-    </div>
+<nav class="nav">
+  <a class="brand" href="index.html">
+    <img src="images/logo-mk.png" alt="Oldtimer-Radio Logo">
+    <span class="brand-text"><strong>Oldtimer-Radio</strong><span>seit 1989 · Senden-Bösensell</span></span>
+  </a>
+  <ul class="navlinks">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="shop.html">Radio-Shop</a></li>
+    <li><a href="restauration.html" aria-current="page">Restauration</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <header class="page-header">
+    <span class="eyebrow">Restauration</span>
+    <h1>Ihr Altgerät verdient den Originalklang zurück.</h1>
+    <p>Statt ein neues Radio zu kaufen, bringen wir Ihr vorhandenes Autoradio wieder in den Originalzustand — technisch geprüft und optisch aufgearbeitet.</p>
   </header>
 
-  <!-- Kopf -->
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">// Werkstatt-Service</span>
-        <h2>Restauration mit Herz und Handwerk</h2>
-        <p>Wir bringen dein Oldtimer-Radio zurück ins Leben — technisch zuverlässig, optisch original. Schritt für Schritt, mit Respekt vor dem Original.</p>
-      </div>
+  <section class="block" style="padding-top:0">
+    <div class="section-head">
+      <span class="eyebrow">Ablauf</span>
+      <h2>So läuft Ihre Restauration ab</h2>
     </div>
-  </section>
-
-  <!-- Ablauf -->
-  <section style="padding-top:0">
-    <div class="container">
-      <div class="split">
-        <div class="split__copy reveal">
-          <span class="script">So gehen wir vor</span>
-          <h2>Vom Dachboden zurück aufs Armaturenbrett</h2>
-          <p>Jedes Radio ist anders — deshalb beginnt jede Restauration mit einer ehrlichen Diagnose. Du bekommst vorab eine Einschätzung, was sinnvoll ist und was es kostet.</p>
-          <ul class="checklist">
-            <li><strong>Diagnose:</strong> Sichtprüfung, Funktionstest, Kostenschätzung</li>
-            <li><strong>Revision:</strong> Reinigung, Kondensatoren, Kontakte, Mechanik</li>
-            <li><strong>Klang:</strong> Abgleich für vollen, sauberen Empfang</li>
-            <li><strong>Optik:</strong> Skalenbeleuchtung, Blenden, Knöpfe wie ab Werk</li>
-            <li><strong>Optional:</strong> dezenter UKW- oder Bluetooth-Umbau</li>
-          </ul>
-          <a class="btn" href="kontakt.html">Restauration anfragen →</a>
+    <div class="panel">
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <div><h3>Anfrage & Zustandsaufnahme</h3><p>Sie schicken uns Ihr Gerät oder beschreiben den Zustand über das Kontaktformular — wir geben Ihnen eine erste Einschätzung.</p></div>
         </div>
-        <div class="split__media reveal">
-          <figure class="polaroid">
-            <div class="polaroid__stage"><img src="images/porsche-spiegel.png" alt="Porsche 356 Oldtimer" /></div>
-            <figcaption>Wieder bereit für die Lieblingsstrecke</figcaption>
-          </figure>
+        <div class="step">
+          <span class="step-num">02</span>
+          <div><h3>Zerlegen & Prüfen</h3><p>Das Radio wird vollständig zerlegt, jede Baugruppe einzeln auf Funktion und Zustand geprüft.</p></div>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <div><h3>Reinigung & Aufarbeitung</h3><p>Chrom, Blenden und Bedienelemente werden gereinigt und aufgearbeitet, defekte Teile ersetzt.</p></div>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <div><h3>Elektronik-Check & Einmessen</h3><p>Die Elektronik wird instand gesetzt und das Gerät auf den korrekten Empfang eingemessen.</p></div>
+        </div>
+        <div class="step">
+          <span class="step-num">05</span>
+          <div><h3>Rückversand</h3><p>Ihr restauriertes Original geht sicher verpackt und versichert zurück an Sie.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pakete -->
-  <section style="background:var(--bg-alt)">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">// Pakete</span>
-        <h2>Drei Wege zum guten Klang</h2>
-        <p>Transparent und fair — die endgültige Empfehlung gibt's nach der Diagnose.</p>
-      </div>
-      <div class="products__grid">
-        <article class="feature reveal">
-          <div class="feature__icon">🔍</div>
-          <h3>Check & Revision</h3>
-          <p>Reinigung, Funktionsprüfung und kleine Reparaturen, damit dein Radio wieder zuverlässig spielt.</p>
-          <p class="product__price" style="margin-top:.6rem">ab 89 €</p>
-        </article>
-        <article class="feature reveal" style="border-color:var(--accent)">
-          <div class="feature__icon">🎚️</div>
-          <h3>Voll-Restauration</h3>
-          <p>Komplette Aufarbeitung von Technik und Optik — innen wie neu, außen wie original.</p>
-          <p class="product__price" style="margin-top:.6rem">ab 199 €</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon">📶</div>
-          <h3>Restauration + Umbau</h3>
-          <p>Klassischer Look, moderner Komfort: dezenter UKW- oder Bluetooth-Umbau auf Wunsch.</p>
-          <p class="product__price" style="margin-top:.6rem">ab 269 €</p>
-        </article>
-      </div>
+  <section class="block">
+    <div class="section-head">
+      <span class="eyebrow">Ergebnisse</span>
+      <h2>Vorher-Zustand, nachher Originalklang</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure>
+        <img src="images/produkte/blaupunkt-front.jpg" alt="Blaupunkt Autoradio, Nahaufnahme Senderskala und Drehknopf">
+        <figcaption>Senderskala nach Aufarbeitung</figcaption>
+      </figure>
+      <figure>
+        <img src="images/produkte/blaupunkt-technik.jpg" alt="Blaupunkt Autoradio, Rückansicht mit Typenschild und Anschlüssen">
+        <figcaption>Anschlüsse geprüft und funktionsfähig</figcaption>
+      </figure>
+      <figure>
+        <img src="images/produkte/blaupunkt-detail.jpg" alt="Blaupunkt Autoradio, Nahaufnahme Tastenfeld und Skala">
+        <figcaption>Tastenfeld original erhalten</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- Vertrauen -->
-  <section>
-    <div class="container">
-      <div class="stats">
-        <div class="reveal"><div class="stat__num" data-count="4200">0</div><div class="stat__label">restaurierte Radios</div></div>
-        <div class="reveal"><div class="stat__num" data-count="35">0</div><div class="stat__label">Jahre Erfahrung</div></div>
-        <div class="reveal"><div class="stat__num" data-count="6">0</div><div class="stat__label">Monate Garantie</div></div>
-        <div class="reveal"><div class="stat__num" data-count="98">0</div><div class="stat__label">% Empfehlung</div></div>
+  <section class="block">
+    <div class="teaser-card" style="max-width:640px">
+      <h3>Bereit für die Restauration?</h3>
+      <p>Schreiben Sie uns kurz, um welches Modell es geht und in welchem Zustand es ist — wir melden uns mit den nächsten Schritten.</p>
+      <div class="btnrow" style="margin-top:0.5rem">
+        <a class="btn primary" href="kontakt.html">Restauration anfragen</a>
       </div>
     </div>
   </section>
+</div>
 
-  <!-- CTA -->
-  <section>
-    <div class="container">
-      <div class="cta-band reveal">
-        <h2>Dein Radio braucht Zuwendung?</h2>
-        <p>Schick uns ein paar Fotos und das Modell — wir melden uns mit einer ehrlichen Einschätzung.</p>
-        <a class="btn" href="kontakt.html">Jetzt Restauration anfragen</a>
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-col">
+        <strong>Oldtimer-Radio</strong>
+        <span>Matthias Klassen<br>Schützenstr. 16<br>48308 Senden-Bösensell</span>
+      </div>
+      <div class="footer-col">
+        <strong>Kontakt</strong>
+        <a href="tel:+4925364289876">0 25 36 | 42 89 87 6</a>
+        <a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a>
+      </div>
+      <div class="footer-col">
+        <strong>Seiten</strong>
+        <a href="shop.html">Radio-Shop</a>
+        <a href="restauration.html">Restauration</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="footer-col">
+        <strong>Rechtliches</strong>
+        <a href="impressum.html">Impressum</a>
+        <a href="gesetzliches.html">Datenschutz · AGB · Widerruf</a>
       </div>
     </div>
-  </section>
+    <div class="footer-bottom">© Oldtimer-Radio.de — Matthias Klassen</div>
+  </div>
+</footer>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="brand" href="index.html"><span class="brand__mark">📻</span><span class="brand__name">Oldtimer-Radio<small>der freundliche Service</small></span></a>
-          <p>Rund um das Oldtimer-Autoradio — mit Leidenschaft, Wissen und einem Lager voller Raritäten.</p>
-        </div>
-        <div><h4>Shop</h4><ul><li><a href="shop.html">Warensortiment</a></li><li><a href="shop.html">Ersatzteile</a></li><li><a href="restauration.html">Restauration</a></li><li><a href="kontakt.html">Anfrage stellen</a></li></ul></div>
-        <div><h4>Service</h4><ul><li><a href="kontakt.html">Kontakt</a></li><li><a href="kontakt.html">Newsletter</a></li><li><a href="#">Zahlungsarten</a></li><li><a href="#">Versand</a></li></ul></div>
-        <div><h4>Kontakt</h4><ul><li>Matthias Klassen</li><li>48308 Senden-Bösensell</li><li><a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a></li><li><a href="tel:+4925369999">+49 2536 99 99</a></li></ul></div>
-      </div>
-      <div class="footer__bottom">
-        <span>© <span id="year"></span> Oldtimer-Radio.de — alle Rechte vorbehalten.</span>
-        <span class="footer__counter">BESUCHER: 351.889</span>
-        <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a> · <a href="#">Widerruf</a></span>
-      </div>
-    </div>
-  </footer>
-
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="drawer" id="drawer" aria-label="Warenkorb">
-    <div class="drawer__head"><h3>Dein Warenkorb</h3><button class="drawer__close" id="drawerClose" aria-label="Schließen">✕</button></div>
-    <div class="drawer__items" id="drawerItems"></div>
-    <div class="drawer__foot">
-      <div class="drawer__total"><span class="label">Summe</span><span class="sum" id="cartTotal">0,00 €</span></div>
-      <button class="btn" id="checkoutBtn" style="width:100%; justify-content:center;">Zur Kasse (Demo)</button>
-      <p class="drawer__note">Demo-Shop · es findet keine echte Zahlung statt.</p>
-    </div>
-  </aside>
-  <div class="toast" id="toast"></div>
-
-  <script src="js/main.js"></script>
 </body>
 </html>

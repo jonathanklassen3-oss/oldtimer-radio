@@ -1,112 +1,157 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="day">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Radio-Shop — Oldtimer-Radio.de</title>
-  <meta name="description" content="Originale Autoradios, Blenden, Ersatzteile und Zubehör für deinen Oldtimer. Becker, Blaupunkt, Telefunken und mehr." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📻</text></svg>" />
+<meta charset="UTF-8">
+<title>Radio-Shop — Oldtimer-Radio.de</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Restaurierte Original-Autoradios und Ersatzteile für über 25 Marken — von Alfa bis Volvo.">
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
-  <!-- ============ NAVIGATION ============ -->
-  <header class="nav" id="nav">
-    <div class="container">
-      <a class="brand" href="index.html" aria-label="Startseite">
-        <span class="brand__mark">📻</span>
-        <span class="brand__name">Oldtimer-Radio<small>seit 1989 · Senden-Bösensell</small></span>
-      </a>
-      <nav>
-        <ul class="nav__links" id="navLinks">
-          <li><a href="index.html">Start</a></li>
-          <li><a href="shop.html">Radio-Shop</a></li>
-          <li><a href="restauration.html">Restauration</a></li>
-          <li><a href="ueber.html">Über uns</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
-      <div class="nav__right">
-        <button class="theme-toggle" id="themeToggle" aria-label="Tag- und Nachtmodus umschalten" title="Tag / Nacht">
-          <span class="theme-toggle__knob" id="themeKnob">☀️</span>
-        </button>
-        <button class="cart-btn" id="cartBtn" aria-label="Warenkorb öffnen">
-          🛒<span class="cart-btn__count" id="cartCount">0</span>
-        </button>
-        <button class="nav__toggle" id="navToggle" aria-label="Menü"><span></span></button>
-      </div>
-    </div>
+<nav class="nav">
+  <a class="brand" href="index.html">
+    <img src="images/logo-mk.png" alt="Oldtimer-Radio Logo">
+    <span class="brand-text"><strong>Oldtimer-Radio</strong><span>seit 1989 · Senden-Bösensell</span></span>
+  </a>
+  <ul class="navlinks">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="shop.html" aria-current="page">Radio-Shop</a></li>
+    <li><a href="restauration.html">Restauration</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <header class="page-header">
+    <span class="eyebrow">Radio-Shop</span>
+    <h1>Produkte für Auge, Ohr und Herz.</h1>
+    <p>Restaurierte Original-Autoradios, Blenden, Knöpfe und Bedienungsanleitungen — sortiert nach Fahrzeugmarke. Bilder im Shop sind Archivbilder und können leicht von der Originalware abweichen.</p>
   </header>
 
-  <!-- ============ SHOP-KOPF ============ -->
-  <section class="shop-head">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">// Warensortiment</span>
-        <h2>Der Radio-Shop</h2>
-        <p>Geprüfte Klassiker, originale Ersatzteile und passendes Zubehör — alles spielbereit und mit Liebe ausgewählt.</p>
-      </div>
-      <div class="shop-toolbar" id="filterBar"><!-- Filter-Chips per JS --></div>
+  <section class="block" style="padding-top:0">
+    <div class="section-head">
+      <span class="eyebrow">Sortiment nach Marke</span>
+      <h2>Von Alfa bis Volvo</h2>
+    </div>
+    <div class="category-grid">
+      <a class="category-chip" href="#">Alfa</a>
+      <a class="category-chip" href="#">Audi</a>
+      <a class="category-chip" href="#">BMW</a>
+      <a class="category-chip" href="#">Borgward</a>
+      <a class="category-chip" href="#">Citroën</a>
+      <a class="category-chip" href="#">DKW</a>
+      <a class="category-chip" href="#">Englische KFZ</a>
+      <a class="category-chip" href="#">Ersatzteile</a>
+      <a class="category-chip" href="#">Ferrari</a>
+      <a class="category-chip" href="#">Fiat</a>
+      <a class="category-chip" href="#">Ford</a>
+      <a class="category-chip" href="#">Jaguar</a>
+      <a class="category-chip" href="#">Mercedes-Benz</a>
+      <a class="category-chip" href="#">NSU</a>
+      <a class="category-chip" href="#">Opel</a>
+      <a class="category-chip" href="#">Peugeot</a>
+      <a class="category-chip" href="#">Porsche</a>
+      <a class="category-chip" href="#">Renault</a>
+      <a class="category-chip" href="#">Saab</a>
+      <a class="category-chip" href="#">Simca</a>
+      <a class="category-chip" href="#">Universal</a>
+      <a class="category-chip" href="#">Volkswagen</a>
+      <a class="category-chip" href="#">Volvo</a>
+      <a class="category-chip" href="#">Youngtimer</a>
+      <a class="category-chip" href="#">Gutscheine</a>
+      <a class="category-chip" href="#">Alle KFZ</a>
+    </div>
+    <p class="form-note" style="margin-top:1.5rem">Hinweis: Die genaue Stückzahl je Kategorie und der Bestellvorgang laufen aktuell über den bestehenden WooCommerce-Shop — hier ist Platz für die jeweilige Produktliste, sobald sie in dieses Layout übernommen wird.</p>
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <span class="eyebrow">Aus dem Sortiment</span>
+      <h2>Beispiele restaurierter Geräte</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure>
+        <img src="images/produkte/becker-hero.jpg" alt="Restauriertes Autoradio, Schrägansicht">
+        <figcaption>Blaupunkt — Frontblende komplett</figcaption>
+      </figure>
+      <figure>
+        <img src="images/produkte/vw-radio.jpg" alt="Volkswagen Autoradio mit VW-Logo auf dem Drehknopf">
+        <figcaption>Volkswagen — restauriert</figcaption>
+      </figure>
+      <figure>
+        <img src="images/produkte/blaupunkt-digital.jpg" alt="Blaupunkt Autoradio, späteres Modell mit AM/FM-Skala">
+        <figcaption>Blaupunkt — späteres Modell, AM/FM</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- ============ PRODUKT-GITTER ============ -->
-  <section style="padding-top:0">
-    <div class="container">
-      <div class="products__grid" id="shopGrid"><!-- per JS --></div>
+  <section class="block">
+    <div class="section-head">
+      <span class="eyebrow">Versand</span>
+      <h2>Versandkosten nach Zielland</h2>
+      <p>Werden mehrere Produkte gekauft, richten sich die Versandkosten einmalig nach der teuersten Ware und dem jeweiligen Land. Weitere Länder auf Anfrage.</p>
+    </div>
+    <div class="panel">
+      <table class="info-table">
+        <thead><tr><th>Zielgebiet</th><th>Kosten</th><th>Lieferzeit</th></tr></thead>
+        <tbody>
+          <tr><td>Deutschland</td><td class="num">7 €</td><td>ca. 4 Tage</td></tr>
+          <tr><td>EU</td><td class="num">19 €</td><td>ca. 4 Tage</td></tr>
+          <tr><td>Schweiz (UPS)</td><td class="num">39 €</td><td>ca. 6 Tage</td></tr>
+          <tr><td>USA / Kanada</td><td class="num">59 €</td><td>ca. 2–5 Tage</td></tr>
+          <tr><td>Australien</td><td class="num">59 €</td><td>ca. 7 Tage</td></tr>
+          <tr><td>Japan / Taiwan</td><td class="num">59 €</td><td>ca. 7 Tage</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- ============ INFO-BAND ============ -->
-  <section style="background:var(--bg-alt)">
-    <div class="container">
-      <div class="features__grid">
-        <article class="feature reveal"><div class="feature__icon">🚚</div><h3>Sicherer Versand</h3><p>Sorgfältig verpackt und versichert — deutschlandweit und international.</p></article>
-        <article class="feature reveal"><div class="feature__icon">✅</div><h3>Geprüfte Qualität</h3><p>Jedes Radio wird vor dem Verkauf getestet und spielbereit übergeben.</p></article>
-        <article class="feature reveal"><div class="feature__icon">💬</div><h3>Persönliche Beratung</h3><p>Du weißt nicht, was passt? Schreib uns — wir helfen weiter.</p></article>
-      </div>
+  <section class="block">
+    <div class="section-head">
+      <span class="eyebrow">Zahlung</span>
+      <h2>Zahlungsvarianten</h2>
+    </div>
+    <div class="panel">
+      <p style="margin:0"><strong>Über PayPal:</strong></p>
+      <ul class="pay-list">
+        <li>Mastercard</li><li>Visa</li><li>American Express</li><li>Discover</li><li>E-Check</li>
+      </ul>
+      <p style="margin-top:1.5rem"><strong>Weitere Möglichkeiten:</strong></p>
+      <ul class="pay-list">
+        <li>Banküberweisung</li><li>Western Union</li>
+      </ul>
     </div>
   </section>
+</div>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="brand" href="index.html">
-            <span class="brand__mark">📻</span>
-            <span class="brand__name">Oldtimer-Radio<small>der freundliche Service</small></span>
-          </a>
-          <p>Rund um das Oldtimer-Autoradio — mit Leidenschaft, Wissen und einem Lager voller Raritäten.</p>
-        </div>
-        <div><h4>Shop</h4><ul><li><a href="shop.html">Warensortiment</a></li><li><a href="shop.html">Ersatzteile</a></li><li><a href="restauration.html">Restauration</a></li><li><a href="kontakt.html">Anfrage stellen</a></li></ul></div>
-        <div><h4>Service</h4><ul><li><a href="kontakt.html">Kontakt</a></li><li><a href="kontakt.html">Newsletter</a></li><li><a href="#">Zahlungsarten</a></li><li><a href="#">Versand</a></li></ul></div>
-        <div><h4>Kontakt</h4><ul><li>Matthias Klassen</li><li>48308 Senden-Bösensell</li><li><a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a></li><li><a href="tel:+4925369999">+49 2536 99 99</a></li></ul></div>
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-col">
+        <strong>Oldtimer-Radio</strong>
+        <span>Matthias Klassen<br>Schützenstr. 16<br>48308 Senden-Bösensell</span>
       </div>
-      <div class="footer__bottom">
-        <span>© <span id="year"></span> Oldtimer-Radio.de — alle Rechte vorbehalten.</span>
-        <span class="footer__counter">BESUCHER: 351.889</span>
-        <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a> · <a href="#">Widerruf</a></span>
+      <div class="footer-col">
+        <strong>Kontakt</strong>
+        <a href="tel:+4925364289876">0 25 36 | 42 89 87 6</a>
+        <a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a>
+      </div>
+      <div class="footer-col">
+        <strong>Seiten</strong>
+        <a href="shop.html">Radio-Shop</a>
+        <a href="restauration.html">Restauration</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="footer-col">
+        <strong>Rechtliches</strong>
+        <a href="impressum.html">Impressum</a>
+        <a href="gesetzliches.html">Datenschutz · AGB · Widerruf</a>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">© Oldtimer-Radio.de — Matthias Klassen</div>
+  </div>
+</footer>
 
-  <!-- ============ WARENKORB ============ -->
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="drawer" id="drawer" aria-label="Warenkorb">
-    <div class="drawer__head"><h3>Dein Warenkorb</h3><button class="drawer__close" id="drawerClose" aria-label="Schließen">✕</button></div>
-    <div class="drawer__items" id="drawerItems"></div>
-    <div class="drawer__foot">
-      <div class="drawer__total"><span class="label">Summe</span><span class="sum" id="cartTotal">0,00 €</span></div>
-      <button class="btn" id="checkoutBtn" style="width:100%; justify-content:center;">Zur Kasse (Demo)</button>
-      <p class="drawer__note">Demo-Shop · es findet keine echte Zahlung statt.</p>
-    </div>
-  </aside>
-  <div class="toast" id="toast"></div>
-
-  <script src="js/main.js"></script>
-  <script src="js/shop.js"></script>
 </body>
 </html>

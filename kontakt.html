@@ -1,144 +1,121 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="day">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kontakt — Oldtimer-Radio.de</title>
-  <meta name="description" content="Kontakt zu Oldtimer-Radio.de: Anfrage zu Radios, Ersatzteilen oder Restauration. Persönliche Beratung aus Senden-Bösensell." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📻</text></svg>" />
+<meta charset="UTF-8">
+<title>Kontakt — Oldtimer-Radio.de</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kontaktieren Sie Oldtimer-Radio.de — Matthias Klassen, Senden-Bösensell.">
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
-  <header class="nav" id="nav">
-    <div class="container">
-      <a class="brand" href="index.html" aria-label="Startseite">
-        <span class="brand__mark">📻</span>
-        <span class="brand__name">Oldtimer-Radio<small>seit 1989 · Senden-Bösensell</small></span>
-      </a>
-      <nav>
-        <ul class="nav__links" id="navLinks">
-          <li><a href="index.html">Start</a></li>
-          <li><a href="shop.html">Radio-Shop</a></li>
-          <li><a href="restauration.html">Restauration</a></li>
-          <li><a href="ueber.html">Über uns</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
-      <div class="nav__right">
-        <button class="theme-toggle" id="themeToggle" aria-label="Tag- und Nachtmodus umschalten" title="Tag / Nacht"><span class="theme-toggle__knob" id="themeKnob">☀️</span></button>
-        <button class="cart-btn" id="cartBtn" aria-label="Warenkorb öffnen">🛒<span class="cart-btn__count" id="cartCount">0</span></button>
-        <button class="nav__toggle" id="navToggle" aria-label="Menü"><span></span></button>
-      </div>
-    </div>
+<nav class="nav">
+  <a class="brand" href="index.html">
+    <img src="images/logo-mk.png" alt="Oldtimer-Radio Logo">
+    <span class="brand-text"><strong>Oldtimer-Radio</strong><span>seit 1989 · Senden-Bösensell</span></span>
+  </a>
+  <ul class="navlinks">
+    <li><a href="index.html">Start</a></li>
+    <li><a href="shop.html">Radio-Shop</a></li>
+    <li><a href="restauration.html">Restauration</a></li>
+    <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <header class="page-header">
+    <span class="eyebrow">Kontakt</span>
+    <h1>Herzlich willkommen bei Oldtimer-Radio.de.</h1>
+    <p>Dem freundlichen Service rund um das Oldtimer-Autoradio — schreiben Sie uns, wir melden uns persönlich zurück.</p>
   </header>
 
-  <!-- Kopf -->
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">// Kontakt</span>
-        <h2>Schreib uns — wir helfen gern</h2>
-        <p>Welches Fahrzeug, welches Radio, welche Frage? Je mehr du uns verrätst, desto besser können wir dir weiterhelfen.</p>
+  <section class="block" style="padding-top:0">
+    <div class="contact-grid">
+      <div class="contact-info panel">
+        <h2>So erreichen Sie uns</h2>
+        <dl>
+          <div><dt>Anschrift</dt><dd>Oldtimer-Radio<br>Matthias Klassen<br>Schützenstr. 16<br>48308 Senden-Bösensell</dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+4925364289876">0 25 36 | 42 89 87 6</a></dd></div>
+          <div><dt>E-Mail</dt><dd><a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a></dd></div>
+          <div><dt>Social</dt><dd><a href="#" rel="noopener">Oldtimer-Radio auf Facebook</a></dd></div>
+        </dl>
       </div>
 
-      <div class="split" style="align-items:start">
-        <!-- Formular -->
-        <div class="reveal">
-          <form class="form" id="contactForm" novalidate>
-            <div class="form__row">
-              <div class="field">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Max Mustermann" required />
-              </div>
-              <div class="field">
-                <label for="email">E-Mail</label>
-                <input id="email" name="email" type="email" placeholder="max@beispiel.de" required />
-              </div>
-            </div>
-            <div class="form__row">
-              <div class="field">
-                <label for="vehicle">Fahrzeug</label>
-                <input id="vehicle" name="vehicle" type="text" placeholder="z. B. Porsche 356, 1963" />
-              </div>
-              <div class="field">
-                <label for="topic">Anliegen</label>
-                <select id="topic" name="topic">
-                  <option>Radio kaufen</option>
-                  <option>Ersatzteil suchen</option>
-                  <option>Restauration</option>
-                  <option>6V→12V Umrüstung</option>
-                  <option>Sonstiges</option>
-                </select>
-              </div>
-            </div>
-            <div class="field">
-              <label for="message">Nachricht</label>
-              <textarea id="message" name="message" rows="5" placeholder="Erzähl uns, worum es geht…" required></textarea>
-            </div>
-            <button class="btn" type="submit">Nachricht senden →</button>
-            <div class="form__ok" id="formOk">Danke! Deine Nachricht ist angekommen — wir melden uns bald. (Demo: es wird nichts wirklich versendet.)</div>
-          </form>
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-row">
+          <div class="field"><label for="f-name">Name *</label><input id="f-name" type="text" required></div>
+          <div class="field"><label for="f-land">Land *</label><input id="f-land" type="text" required></div>
         </div>
-
-        <!-- Info -->
-        <div class="reveal">
-          <div class="info-card">
-            <div class="row"><span class="ic">📍</span><div><strong>Adresse</strong><br>Matthias Klassen<br>48308 Senden-Bösensell</div></div>
-            <div class="row"><span class="ic">✉️</span><div><strong>E-Mail</strong><br><a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a></div></div>
-            <div class="row"><span class="ic">📞</span><div><strong>Telefon</strong><br><a href="tel:+4925369999">+49 2536 99 99</a></div></div>
-            <div class="row"><span class="ic">🕑</span><div><strong>Erreichbarkeit</strong><br>Mo–Fr 9–17 Uhr · Termine nach Absprache</div></div>
-          </div>
-
-          <div class="info-card" style="margin-top:1.2rem">
-            <div class="row"><span class="ic">📬</span><div>
-              <strong>Newsletter</strong>
-              <p style="color:var(--text-soft); margin:.3rem 0 .6rem; font-size:.92rem">Neue Funde und Restaurations-Geschichten, ein paar Mal im Jahr.</p>
-              <form class="form" id="newsletterForm">
-                <div class="field"><input type="email" placeholder="deine@email.de" required aria-label="E-Mail für Newsletter" /></div>
-                <button class="btn btn--gold" type="submit">Anmelden</button>
-                <div class="form__ok" id="newsOk">Angemeldet! (Demo)</div>
-              </form>
-            </div></div>
+        <div class="form-row">
+          <div class="field"><label for="f-strasse">Straße</label><input id="f-strasse" type="text"></div>
+          <div class="field"><label for="f-plz">PLZ / Wohnort</label><input id="f-plz" type="text"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="f-mail">E-Mail-Adresse *</label><input id="f-mail" type="email" required></div>
+          <div class="field"><label for="f-tel">Telefon</label><input id="f-tel" type="tel"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="f-produkt">Produkt / Modell</label><input id="f-produkt" type="text" placeholder="z. B. Blaupunkt Frankfurt"></div>
+          <div class="field">
+            <label for="f-art">Art der Anfrage</label>
+            <select id="f-art">
+              <option>Kaufanfrage</option>
+              <option>Restauration</option>
+              <option>Ersatzteile</option>
+              <option>Sonstiges</option>
+            </select>
           </div>
         </div>
-      </div>
+        <div class="field"><label for="f-msg">Ihre Nachricht</label><textarea id="f-msg" required></textarea></div>
+        <label style="display:flex; gap:0.5rem; align-items:flex-start; font-size:0.85rem; color:var(--ink-soft)">
+          <input type="checkbox" required style="margin-top:0.2rem">
+          Ich stimme der <a href="gesetzliches.html">Datenschutzerklärung</a> zu.
+        </label>
+        <button class="btn primary" type="submit">Anfrage senden</button>
+        <p class="form-note">* Pflichtfelder. Formular-Vorschau für den Design-Test — ohne echten Versand.</p>
+      </form>
     </div>
   </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="brand" href="index.html"><span class="brand__mark">📻</span><span class="brand__name">Oldtimer-Radio<small>der freundliche Service</small></span></a>
-          <p>Rund um das Oldtimer-Autoradio — mit Leidenschaft, Wissen und einem Lager voller Raritäten.</p>
-        </div>
-        <div><h4>Shop</h4><ul><li><a href="shop.html">Warensortiment</a></li><li><a href="shop.html">Ersatzteile</a></li><li><a href="restauration.html">Restauration</a></li><li><a href="kontakt.html">Anfrage stellen</a></li></ul></div>
-        <div><h4>Service</h4><ul><li><a href="kontakt.html">Kontakt</a></li><li><a href="kontakt.html">Newsletter</a></li><li><a href="#">Zahlungsarten</a></li><li><a href="#">Versand</a></li></ul></div>
-        <div><h4>Kontakt</h4><ul><li>Matthias Klassen</li><li>48308 Senden-Bösensell</li><li><a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a></li><li><a href="tel:+4925369999">+49 2536 99 99</a></li></ul></div>
+  <section class="block">
+    <div class="teaser-card" style="max-width:640px">
+      <h3>Newsletter</h3>
+      <p>Neuigkeiten aus der Werkstatt und dem Sortiment direkt per E-Mail.</p>
+      <form onsubmit="return false;" style="display:flex; gap:0.6rem; margin-top:0.5rem; flex-wrap:wrap">
+        <input type="email" placeholder="ihre@email.de" required style="flex:1; min-width:200px; padding:0.7rem 0.85rem; border-radius:8px; border:1px solid var(--line); font:inherit;">
+        <button class="btn primary" type="submit">Anmelden</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-col">
+        <strong>Oldtimer-Radio</strong>
+        <span>Matthias Klassen<br>Schützenstr. 16<br>48308 Senden-Bösensell</span>
       </div>
-      <div class="footer__bottom">
-        <span>© <span id="year"></span> Oldtimer-Radio.de — alle Rechte vorbehalten.</span>
-        <span class="footer__counter">BESUCHER: 351.889</span>
-        <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a> · <a href="#">Widerruf</a></span>
+      <div class="footer-col">
+        <strong>Kontakt</strong>
+        <a href="tel:+4925364289876">0 25 36 | 42 89 87 6</a>
+        <a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a>
+      </div>
+      <div class="footer-col">
+        <strong>Seiten</strong>
+        <a href="shop.html">Radio-Shop</a>
+        <a href="restauration.html">Restauration</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="footer-col">
+        <strong>Rechtliches</strong>
+        <a href="impressum.html">Impressum</a>
+        <a href="gesetzliches.html">Datenschutz · AGB · Widerruf</a>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">© Oldtimer-Radio.de — Matthias Klassen</div>
+  </div>
+</footer>
 
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="drawer" id="drawer" aria-label="Warenkorb">
-    <div class="drawer__head"><h3>Dein Warenkorb</h3><button class="drawer__close" id="drawerClose" aria-label="Schließen">✕</button></div>
-    <div class="drawer__items" id="drawerItems"></div>
-    <div class="drawer__foot">
-      <div class="drawer__total"><span class="label">Summe</span><span class="sum" id="cartTotal">0,00 €</span></div>
-      <button class="btn" id="checkoutBtn" style="width:100%; justify-content:center;">Zur Kasse (Demo)</button>
-      <p class="drawer__note">Demo-Shop · es findet keine echte Zahlung statt.</p>
-    </div>
-  </aside>
-  <div class="toast" id="toast"></div>
-
-  <script src="js/main.js"></script>
 </body>
 </html>

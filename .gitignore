@@ -4,3 +4,6 @@
 # Editor
 .vscode/
 .idea/
+
+# Rohmaterial/Recherche (nicht Teil der eigentlichen Website)
+assets-from-live/

@@ -1,270 +1,121 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="day">
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oldtimer-Radio.de — Autoradios mit Geschichte</title>
-  <meta name="description" content="Der freundliche Service rund um das Oldtimer-Autoradio: originale Radios, Ersatzteile, Blenden und liebevolle Restauration. Becker, Blaupunkt, Telefunken & mehr." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📻</text></svg>" />
+<meta charset="UTF-8">
+<title>Oldtimer-Radio.de — Autoradios mit Geschichte</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Der freundliche Service rund um das Oldtimer-Autoradio: originale Radios, Ersatzteile und liebevolle Restauration für Becker, Blaupunkt, Telefunken und viele mehr.">
+<link rel="stylesheet" href="css/site.css">
 </head>
 <body>
 
-  <!-- ============ NAVIGATION ============ -->
-  <header class="nav" id="nav">
-    <div class="container">
-      <a class="brand" href="index.html" aria-label="Startseite">
-        <span class="brand__mark">📻</span>
-        <span class="brand__name">Oldtimer-Radio<small>seit 1989 · Senden-Bösensell</small></span>
-      </a>
+<nav class="nav">
+  <a class="brand" href="index.html">
+    <img src="images/logo-mk.png" alt="Oldtimer-Radio Logo">
+    <span class="brand-text"><strong>Oldtimer-Radio</strong><span>seit 1989 · Senden-Bösensell</span></span>
+  </a>
+  <ul class="navlinks">
+    <li><a href="index.html" aria-current="page">Start</a></li>
+    <li><a href="shop.html">Radio-Shop</a></li>
+    <li><a href="restauration.html">Restauration</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+  </ul>
+</nav>
 
-      <nav>
-        <ul class="nav__links" id="navLinks">
-          <li><a href="index.html" class="is-active">Start</a></li>
-          <li><a href="shop.html">Radio-Shop</a></li>
-          <li><a href="restauration.html">Restauration</a></li>
-          <li><a href="ueber.html">Über uns</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-      </nav>
-
-      <div class="nav__right">
-        <button class="theme-toggle" id="themeToggle" aria-label="Tag- und Nachtmodus umschalten" title="Tag / Nacht">
-          <span class="theme-toggle__knob" id="themeKnob">☀️</span>
-        </button>
-        <button class="cart-btn" id="cartBtn" aria-label="Warenkorb öffnen">
-          🛒<span class="cart-btn__count" id="cartCount">0</span>
-        </button>
-        <button class="nav__toggle" id="navToggle" aria-label="Menü"><span></span></button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ============ HERO / AUTO-SZENE ============ -->
+<div class="wrap">
   <section class="hero">
-    <div class="hero__sky"></div>
-    <div class="hero__celestial" id="celestial"></div>
-    <div class="hero__stars" id="stars"></div>
-
-    <!-- Wolken (nur tags sichtbar) -->
-    <div class="cloud" style="top:18%; left:8%;">
-      <span style="width:120px;height:34px;"></span>
-    </div>
-    <div class="cloud" style="top:30%; left:60%;">
-      <span style="width:90px;height:26px;"></span>
-    </div>
-
-    <div class="hero__inner">
-      <div class="container">
-        <span class="hero__badge"><span class="dot"></span> ON AIR · Klang aus einer anderen Zeit</span>
-        <h1>Dein Klassiker<br>verdient den <span class="hl">echten Klang.</span></h1>
-        <p class="hero__sub">Originale Autoradios, seltene Ersatzteile und liebevolle Restauration — für Becker, Blaupunkt, Telefunken und viele mehr. Damit dein Oldtimer wieder den richtigen Ton trifft.</p>
-        <div class="hero__cta">
-          <a class="btn" href="shop.html">Zum Radio-Shop →</a>
-          <a class="btn btn--ghost" href="restauration.html">Restauration entdecken</a>
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Service seit 1989</div>
+        <h1>Originalklang für Ihren Klassiker.</h1>
+        <p class="lede">Restaurierte Autoradios und Ersatzteile für Becker, Blaupunkt und Telefunken — geprüft, eingemessen, einbaufertig für Ihren Oldtimer.</p>
+        <div class="btnrow">
+          <a class="btn primary" href="shop.html">Zum Radio-Shop</a>
+          <a class="btn ghost" href="restauration.html">Restauration ansehen</a>
         </div>
       </div>
+      <figure class="hero-figure">
+        <img class="hero-photo" src="images/produkte/becker-hero.jpg" alt="Restauriertes Blaupunkt Autoradio, Chrom und Cremeton, Frontansicht schräg">
+        <figcaption class="hero-caption">Blaupunkt Frankfurt, restauriert — Originalteile, gereinigtes Chrom und eingemessener Empfang. Eines von über 25 Marken in unserem Sortiment.</figcaption>
+      </figure>
     </div>
 
-    <!-- Auto-Szene: eigener Bereich UNTER dem Text, das Auto steht auf der Strasse -->
-    <div class="hero__scene">
-      <div class="hero__road"></div>
-      <img class="hero-car hero-car--left"  id="carLeft"  src="images/porsche.png"         alt="Porsche 356 Oldtimer" />
-      <img class="hero-car hero-car--right" id="carRight" src="images/porsche-spiegel.png" alt="Porsche 356 Oldtimer, gespiegelt" />
+    <div class="facts">
+      <div class="fact"><strong>35+ Jahre</strong><span>Erfahrung mit Oldtimer-Autoradios</span></div>
+      <div class="fact"><strong>27+ Marken</strong><span>Von Alfa bis Volvo — Original­teile im Sortiment</span></div>
+      <div class="fact"><strong>Geprüft & eingemessen</strong><span>Jedes Gerät vor Versand getestet</span></div>
     </div>
   </section>
 
-  <!-- Lauftext-Band -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span>BECKER MEXICO</span><span class="star">★</span>
-      <span>BLAUPUNKT FRANKFURT</span><span class="star">★</span>
-      <span>TELEFUNKEN</span><span class="star">★</span>
-      <span>6V → 12V UMRÜSTUNG</span><span class="star">★</span>
-      <span>ORIGINALE BLENDEN</span><span class="star">★</span>
-      <span>UKW-UMBAU</span><span class="star">★</span>
-      <!-- Verdopplung für nahtlose Schleife -->
-      <span>BECKER MEXICO</span><span class="star">★</span>
-      <span>BLAUPUNKT FRANKFURT</span><span class="star">★</span>
-      <span>TELEFUNKEN</span><span class="star">★</span>
-      <span>6V → 12V UMRÜSTUNG</span><span class="star">★</span>
-      <span>ORIGINALE BLENDEN</span><span class="star">★</span>
-      <span>UKW-UMBAU</span><span class="star">★</span>
+  <section class="block">
+    <div class="section-head">
+      <span class="eyebrow">Was wir tun</span>
+      <h2>Zwei Wege zum Originalklang</h2>
     </div>
+    <div class="teaser-grid">
+      <div class="teaser-card">
+        <h3>Radio-Shop</h3>
+        <p>Restaurierte Original-Autoradios und Ersatzteile für über 25 Marken — von Alfa bis Volvo, dazu Blenden, Knöpfe und Bedienungsanleitungen.</p>
+        <a href="shop.html">Sortiment ansehen →</a>
+      </div>
+      <div class="teaser-card">
+        <h3>Restauration</h3>
+        <p>Ihr eigenes Altgerät wird zerlegt, gereinigt, geprüft und wieder original zusammengesetzt — für den Klang, den Ihr Oldtimer verdient.</p>
+        <a href="restauration.html">Ablauf ansehen →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <span class="eyebrow">Aus der Werkstatt</span>
+      <h2>Handarbeit im Detail</h2>
+      <p>Jedes Radio wird zerlegt, gereinigt, geprüft und wieder original zusammengesetzt — bevor es Ihren Oldtimer erreicht.</p>
+    </div>
+    <div class="gallery-grid">
+      <figure>
+        <img src="images/produkte/blaupunkt-seite.jpg" alt="Blaupunkt Autoradio seitlich fotografiert">
+        <figcaption>Blaupunkt — Seitenansicht mit Anschlüssen</figcaption>
+      </figure>
+      <figure>
+        <img src="images/produkte/blaupunkt-technik.jpg" alt="Blaupunkt Autoradio, Rückansicht mit Typenschild und Anschlüssen">
+        <figcaption>Elektronik geprüft und instand gesetzt</figcaption>
+      </figure>
+      <figure>
+        <img src="images/produkte/blaupunkt-detail.jpg" alt="Blaupunkt Autoradio, Nahaufnahme Tastenfeld und Skala">
+        <figcaption>Blaupunkt — Tastenfeld M · K · U · U</figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-col">
+        <strong>Oldtimer-Radio</strong>
+        <span>Matthias Klassen<br>Schützenstr. 16<br>48308 Senden-Bösensell</span>
+      </div>
+      <div class="footer-col">
+        <strong>Kontakt</strong>
+        <a href="tel:+4925364289876">0 25 36 | 42 89 87 6</a>
+        <a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a>
+      </div>
+      <div class="footer-col">
+        <strong>Seiten</strong>
+        <a href="shop.html">Radio-Shop</a>
+        <a href="restauration.html">Restauration</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="footer-col">
+        <strong>Rechtliches</strong>
+        <a href="impressum.html">Impressum</a>
+        <a href="gesetzliches.html">Datenschutz · AGB · Widerruf</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© Oldtimer-Radio.de — Matthias Klassen</div>
   </div>
+</footer>
 
-  <!-- ============ MARKEN ============ -->
-  <section class="brands">
-    <div class="container">
-      <div class="brands__row reveal">
-        <span>BECKER</span><span>BLAUPUNKT</span><span>TELEFUNKEN</span><span>GRUNDIG</span><span>VDO</span><span>PHILIPS</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LEISTUNGEN ============ -->
-  <section id="leistungen">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">// Unser Service</span>
-        <h2>Alles für den guten Ton</h2>
-        <p>Vom seltenen Ersatzteil bis zur kompletten Restauration — bei uns bekommst du das Wissen aus über drei Jahrzehnten Leidenschaft.</p>
-      </div>
-      <div class="features__grid">
-        <article class="feature reveal">
-          <div class="feature__icon">📻</div>
-          <h3>Originale Radios</h3>
-          <p>Geprüfte Klassiker, spielbereit und mit Charakter — passend zu Marke und Baujahr deines Fahrzeugs.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon">🔧</div>
-          <h3>Ersatzteile & Blenden</h3>
-          <p>Knöpfe, Tasten, Skalen, Blenden und Anleitungen. Auch das kleine Teil, das sonst niemand mehr hat.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon">⚡</div>
-          <h3>6V → 12V Umrüstung</h3>
-          <p>Spannungswandler und fachgerechter Umbau, damit dein altes Radio in jedem Bordnetz sauber läuft.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon">🎚️</div>
-          <h3>Restauration</h3>
-          <p>Behutsame Aufarbeitung von Technik und Optik — original im Look, zuverlässig in der Technik.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRODUKT-AUSWAHL ============ -->
-  <section id="auswahl" style="background:var(--bg-alt)">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">// Beliebte Stücke</span>
-        <h2>Frisch aus der Werkstatt</h2>
-        <p>Eine kleine Auswahl aus dem Shop — handverlesen und spielbereit.</p>
-      </div>
-      <div class="products__grid" id="featuredGrid"><!-- per JS gefüllt --></div>
-      <div style="text-align:center; margin-top:2.5rem;" class="reveal">
-        <a class="btn btn--gold" href="shop.html">Alle Radios ansehen →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ RESTAURATION (Split) ============ -->
-  <section>
-    <div class="container">
-      <div class="split">
-        <div class="split__media reveal">
-          <figure class="polaroid">
-            <div class="polaroid__stage"><img src="images/porsche.png" alt="Porsche 356 Oldtimer" /></div>
-            <figcaption>Bereit für die nächste Ausfahrt</figcaption>
-          </figure>
-        </div>
-        <div class="split__copy reveal">
-          <span class="script">Werkstatt-Liebe</span>
-          <h2>Restauration mit Fingerspitzengefühl</h2>
-          <p>Ein Oldtimer-Radio ist mehr als Technik — es ist ein Stück Zeitgeschichte im Armaturenbrett. Wir bringen es zurück zum Leben, ohne ihm seinen Charakter zu nehmen.</p>
-          <ul class="checklist">
-            <li>Reinigung & Revision der Mechanik und Elektronik</li>
-            <li>Skalenbeleuchtung und Klang wie ab Werk</li>
-            <li>Optional: dezenter UKW- oder Bluetooth-Umbau</li>
-            <li>Originalgetreue Blenden, Knöpfe und Skalen</li>
-          </ul>
-          <a class="btn" href="restauration.html">Mehr zur Restauration →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ZAHLEN ============ -->
-  <section style="background:var(--bg-alt)">
-    <div class="container">
-      <div class="stats">
-        <div class="reveal"><div class="stat__num" data-count="35">0</div><div class="stat__label">Jahre Erfahrung</div></div>
-        <div class="reveal"><div class="stat__num" data-count="4200">0</div><div class="stat__label">restaurierte Radios</div></div>
-        <div class="reveal"><div class="stat__num" data-count="120">0</div><div class="stat__label">Modelle auf Lager</div></div>
-        <div class="reveal"><div class="stat__num" data-count="98">0</div><div class="stat__label">% zufriedene Kunden</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CTA ============ -->
-  <section>
-    <div class="container">
-      <div class="cta-band reveal">
-        <h2>Du suchst ein bestimmtes Teil?</h2>
-        <p>Sag uns, welches Fahrzeug und welches Radio du fährst — wir finden die passende Lösung.</p>
-        <a class="btn" href="kontakt.html">Jetzt anfragen</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a class="brand" href="index.html">
-            <span class="brand__mark">📻</span>
-            <span class="brand__name">Oldtimer-Radio<small>der freundliche Service</small></span>
-          </a>
-          <p>Rund um das Oldtimer-Autoradio — mit Leidenschaft, Wissen und einem Lager voller Raritäten.</p>
-        </div>
-        <div>
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="shop.html">Warensortiment</a></li>
-            <li><a href="shop.html">Ersatzteile</a></li>
-            <li><a href="restauration.html">Restauration</a></li>
-            <li><a href="kontakt.html">Anfrage stellen</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Service</h4>
-          <ul>
-            <li><a href="kontakt.html">Kontakt</a></li>
-            <li><a href="kontakt.html">Newsletter</a></li>
-            <li><a href="#">Zahlungsarten</a></li>
-            <li><a href="#">Versand</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Kontakt</h4>
-          <ul>
-            <li>Matthias Klassen</li>
-            <li>48308 Senden-Bösensell</li>
-            <li><a href="mailto:info@oldtimer-radio.de">info@oldtimer-radio.de</a></li>
-            <li><a href="tel:+4925369999">+49 2536 99 99</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>© <span id="year"></span> Oldtimer-Radio.de — alle Rechte vorbehalten.</span>
-        <span class="footer__counter">BESUCHER: 351.889</span>
-        <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a> · <a href="#">AGB</a> · <a href="#">Widerruf</a></span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ============ WARENKORB-SCHUBLADE ============ -->
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="drawer" id="drawer" aria-label="Warenkorb">
-    <div class="drawer__head">
-      <h3>Dein Warenkorb</h3>
-      <button class="drawer__close" id="drawerClose" aria-label="Schließen">✕</button>
-    </div>
-    <div class="drawer__items" id="drawerItems"></div>
-    <div class="drawer__foot">
-      <div class="drawer__total"><span class="label">Summe</span><span class="sum" id="cartTotal">0,00 €</span></div>
-      <button class="btn" id="checkoutBtn" style="width:100%; justify-content:center;">Zur Kasse (Demo)</button>
-      <p class="drawer__note">Demo-Shop · es findet keine echte Zahlung statt.</p>
-    </div>
-  </aside>
-
-  <div class="toast" id="toast"></div>
-
-  <script src="js/main.js"></script>
 </body>
 </html>
